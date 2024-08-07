@@ -20,7 +20,7 @@ export default function ButtonAppBar() {
           </Link>
             <Button href='/store' color="inherit">Shop</Button>
             <Button href='/about' color="inherit">About</Button>
-            <Button href='shoppingcart' color="inherit"><ShoppingCartIcon/></Button>
+            <Button href='/shoppingcart' color="inherit"><ShoppingCartIcon/></Button>
           </Toolbar>
         </AppBar>
       </Box>
