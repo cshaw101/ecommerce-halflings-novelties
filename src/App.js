@@ -4,6 +4,7 @@ import Home from './components/Home';
 import ButtonAppBar from './components/Nav';
 import ShoppingCart from './components/ShoppingCart'
 import About from './components/About';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
     <Route path='/shoppingcart' element={<ShoppingCart />} />
     <Route path='/about' element={<About />} />
    </Routes>
-
+  <Footer />
    </>
   );
 }
