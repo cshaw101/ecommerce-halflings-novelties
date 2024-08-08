@@ -3,6 +3,7 @@ import Store from './components/Store';
 import Home from './components/Home';
 import ButtonAppBar from './components/Nav';
 import ShoppingCart from './components/ShoppingCart'
+import About from './components/About';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
     <Route path='/' element={<Home />} />
     <Route path='/store' element={<Store />}/>
     <Route path='/shoppingcart' element={<ShoppingCart />} />
+    <Route path='/about' element={<About />} />
    </Routes>
 
    </>
