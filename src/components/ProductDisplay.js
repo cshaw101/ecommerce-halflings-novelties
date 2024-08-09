@@ -1,4 +1,5 @@
 import React from 'react'
+import BasicButtons from '../styles/BasicButtons'
 
 const ProductDisplay = () => (
     <section>
@@ -8,14 +9,13 @@ const ProductDisplay = () => (
           alt="The cover of Stubborn Attachments"
         />
         <div className="description">
-        <h3>Stubborn Attachments</h3>
-        <h5>$20.00</h5>
+        <h3>Page Deoderant</h3>
+        <h5>$100.00</h5>
         </div>
       </div>
       <form action="http://localhost:3001/create-checkout-session" method="POST">
-        <button type="submit">
-          Checkout
-        </button>
+      <BasicButtons label="Checkout" variant="contained" type="submit" />
+        
       </form>
     </section>
   );
