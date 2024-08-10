@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-//import BasicButtons from '../styles/BasicButton';
 import Message from './Message';
 import ProductDisplay from './ProductDisplay';
 
