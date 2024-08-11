@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Message from './Message';
-import ProductDisplay from './ProductDisplay';
+// import ProductDisplay from './ProductDisplay';
+// import mockProducts from '../mockProducts';
+
 
 
 const ShoppingCart = () => {
   const [message, setMessage] = useState("");
+
   useEffect(() => {
     // Check to see if this is a redirect back from Checkout
     const query = new URLSearchParams(window.location.search);
@@ -20,10 +23,9 @@ const ShoppingCart = () => {
     }
   }, []);
 
-  return message ? (
+  return (
     <Message message={message} />
-  ) : (
-    <ProductDisplay />
-  );
-}
-export default ShoppingCart
+  ) 
+};
+
+export default ShoppingCart;
