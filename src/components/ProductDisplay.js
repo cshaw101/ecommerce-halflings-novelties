@@ -6,7 +6,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 
-export default function ProductDisplay({ name, description, price, imageUrl }) {
+export default function ProductDisplay({ name, description, price, imageUrl, quanitity }) {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
@@ -25,11 +25,15 @@ export default function ProductDisplay({ name, description, price, imageUrl }) {
         <Typography variant="body2" color="text.secondary">
           {price}
         </Typography>
+        <Typography variant="body2" color="text.secondary">
+          Available:{quanitity}
+        </Typography>
       </CardContent>
       <CardActions>
         <form action="http://localhost:3001/create-checkout-session" method="POST">
           <BasicButtons label="Checkout" variant="contained" type="submit" />
         </form>
+        <BasicButtons label="Details" variant="outlined" type="submit"/>
       </CardActions>
     </Card>
   );

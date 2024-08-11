@@ -7,7 +7,7 @@ import ProductDisplay from './ProductDisplay';
 
 const Store = () => {
   const [page, setPage] = useState(1);
-  const productsPerPage = 6;
+  const productsPerPage = 9;
 
   const handleChange = (event, value) => {
     setPage(value);
@@ -30,6 +30,7 @@ const Store = () => {
               description={product.description}
               price={product.price}
               imageUrl={product.imageUrl}
+              quanitity={product.quantity}
             />
           </Grid>
         ))}
