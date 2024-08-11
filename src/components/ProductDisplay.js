@@ -19,14 +19,14 @@ export default function ProductDisplay({ name, description, price, imageUrl, qua
         <Typography gutterBottom variant="h5" component="div">
           {name}
         </Typography>
-        <Typography variant="body1" color="text.primary">
+        <Typography variant="subtitle1" color="text.primary">
           {description}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="subtitle2" color="text.secondary">
           {price}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Available:{quanitity}
+          Available: {quanitity}
         </Typography>
       </CardContent>
       <CardActions>
