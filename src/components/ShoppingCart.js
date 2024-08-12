@@ -9,7 +9,6 @@ const ShoppingCart = () => {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    // Check to see if this is a redirect back from Checkout
     const query = new URLSearchParams(window.location.search);
 
     if (query.get("success")) {

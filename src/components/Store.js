@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import Grid from '@mui/material/Grid';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
-import mockProducts from '../mockProducts';
+import useProducts from '../mockProducts';
 import ProductDisplay from './ProductDisplay';
 
 const Store = () => {
+  const { productData, loading, error } = useProducts();
   const [page, setPage] = useState(1);
   const productsPerPage = 9;
 
@@ -13,11 +14,13 @@ const Store = () => {
     setPage(value);
   };
 
-  // Determine the products to display based on the current page
-  const displayedProducts = mockProducts.slice(
+  const displayedProducts = productData.slice(
     (page - 1) * productsPerPage,
     page * productsPerPage
   );
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error loading products: {error.message}</p>;
 
   return (
     <div>
@@ -26,18 +29,19 @@ const Store = () => {
         {displayedProducts.map((product) => (
           <Grid item xs={12} sm={6} md={4} key={product.id}>
             <ProductDisplay
-              name={product.name}
+              name={product.title}
               description={product.description}
-              price={product.price}
-              imageUrl={product.imageUrl}
-              quanitity={product.quantity}
+              price={`$${product.price}`}
+              imageUrl={product.thumbnail}
+              stock={product.stock}
+              product={product}  // Pass the entire product object
             />
           </Grid>
         ))}
       </Grid>
       <Stack spacing={2} sx={{ marginTop: '20px', alignItems: 'center' }}>
         <Pagination
-          count={Math.ceil(mockProducts.length / productsPerPage)}
+          count={Math.ceil(productData.length / productsPerPage)}
           page={page}
           onChange={handleChange}
           variant="outlined"
