@@ -26,7 +26,7 @@ const Store = () => {
 
   return (
     <div>
-      <h1>Store</h1>
+      <h1>Our Products</h1>
       <Grid container spacing={2}>
         {loading
           ? skeletonArray.map((_, index) => (
