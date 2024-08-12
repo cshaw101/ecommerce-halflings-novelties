@@ -18,6 +18,7 @@ export default function ButtonAppBar() {
               Halflings Novelties
             </Typography>
           </Link>
+            <Button href='/home' color="inherit">Home</Button>
             <Button href='/store' color="inherit">Shop</Button>
             <Button href='/about' color="inherit">About</Button>
             <Button href='/shoppingcart' color="inherit"><ShoppingCartIcon/></Button>

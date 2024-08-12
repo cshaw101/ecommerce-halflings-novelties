@@ -1,4 +1,3 @@
-// ProductDetails.js
 import React, { useState } from 'react';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
@@ -11,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 
 const ProductDetails = ({ open, onClose, product }) => {
   const navigate = useNavigate();
-  const [selectedImage, setSelectedImage] = useState(product.thumbnail); // Default to the thumbnail image
+  const [selectedImage, setSelectedImage] = useState(product.thumbnail);
 
   if (!product) return null;
 
@@ -49,7 +48,6 @@ const ProductDetails = ({ open, onClose, product }) => {
                     <FavoriteBorderIcon />
                   </IconButton>
                 </div>
-                {/* Display the selected image */}
                 <img 
                   src={selectedImage} 
                   alt={product.title} 
@@ -58,7 +56,6 @@ const ProductDetails = ({ open, onClose, product }) => {
               </div>
               <div className="photo-album" style={{ marginTop: '10px' }}>
                 <ul style={{ display: 'flex', listStyleType: 'none', padding: 0, margin: 0 }}>
-                  {/* Gallery images */}
                   {galleryImages.map((img, index) => (
                     <li key={index} style={{ marginRight: '10px' }}>
                       <img 

@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Message from './Message';
-// import ProductDisplay from './ProductDisplay';
-// import mockProducts from '../mockProducts';
 
 
 
