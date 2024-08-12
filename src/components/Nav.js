@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -8,22 +8,25 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Link } from 'react-router-dom';
 
 
+
 export default function ButtonAppBar() {
-    return (
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
-          <Toolbar>
+  return (
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
+        <Toolbar>
           <Link to="/" style={{ textDecoration: 'none', color: 'inherit', flexGrow: 1 }}>
             <Typography variant="h4" component="div">
               Halflings Novelties
             </Typography>
           </Link>
-            <Button href='/' color="inherit">Home</Button>
-            <Button href='/store' color="inherit">Shop</Button>
-            <Button href='/about' color="inherit">About</Button>
-            <Button href='/shoppingcart' color="inherit"><ShoppingCartIcon/></Button>
-          </Toolbar>
-        </AppBar>
-      </Box>
-    );
-  }
+          <Button component={Link} to="/" color="inherit">Home</Button>
+          <Button component={Link} to="/store" color="inherit">Shop</Button>
+          <Button component={Link} to="/about" color="inherit">About</Button>
+          <Button component={Link} to="/shoppingcart" color="inherit">
+            <ShoppingCartIcon />
+          </Button>
+        </Toolbar>
+      </AppBar>
+    </Box>
+  );
+}
