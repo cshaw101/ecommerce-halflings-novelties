@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { useCart } from '../context/CartContext';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
+import BasicButtons from '../styles/BasicButtons'; // Import your custom button component
 
 const ShoppingCart = () => {
   const { cartItems, removeFromCart, clearCart } = useCart();
   const [alertOpen, setAlertOpen] = useState(false);
   const [alertMessage, setAlertMessage] = useState('');
-  const [alertSeverity, setAlertSeverity] = useState('info'); // Set default severity to 'info'
+  const [alertSeverity, setAlertSeverity] = useState('info'); 
 
   const handleRemoveFromCart = (id) => {
     removeFromCart(id);
@@ -32,13 +33,14 @@ const ShoppingCart = () => {
               <h3>{item.title}</h3>
               <p>Price: ${item.price}</p>
               <p>Quantity: {item.quantity}</p>
-              <button onClick={() => handleRemoveFromCart(item.id)}>Remove</button>
+              <BasicButtons onClick={() => handleRemoveFromCart(item.id)} label='Remove' variant="contained" color="secondary" />
             </li>
           ))}
         </ul>
       )}
       {cartItems.length > 0 && (
-        <button onClick={clearCart}>Clear Cart</button>
+        <BasicButtons onClick={clearCart} label='Clear Cart' variant="contained" color="primary" />
+
       )}
 
       <Snackbar
