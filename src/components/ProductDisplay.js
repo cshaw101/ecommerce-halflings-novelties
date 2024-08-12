@@ -16,9 +16,15 @@ const ProductDisplay = ({ name, description, price, imageUrl, stock, product }) 
 
   return (
     <div className="product-display">
-      <img src={imageUrl} alt={name} style={{ width: '100%' }} />
-      <h2>{name}</h2>
+      <img src={imageUrl} alt={name} style={{ width: '100%', cursor: 'pointer' }} onClick={handleOpenDialog} />
+      {/* Make the product name clickable */}
+      <h2 style={{ cursor: 'pointer', color: 'blue' }} onClick={handleOpenDialog}>
+        {name}
+      </h2>
       <p>{description}</p>
+      <p style={{ fontWeight: 'bold', color: stock === 'In Stock' ? 'green' : 'red' }}>
+        {stock}
+      </p>
       <p>{price}</p>
       <Button variant="contained" color="primary">
         Add to Cart

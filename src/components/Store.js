@@ -45,7 +45,7 @@ const Store = () => {
                   description={product.description}
                   price={`$${product.price}`}
                   imageUrl={product.thumbnail}
-                  stock={product.stock}
+                  stock={product.stock > 0 ? 'In Stock' : 'Out of Stock'}
                   product={product} // Pass the entire product object
                 />
               </Grid>

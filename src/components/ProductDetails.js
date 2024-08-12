@@ -15,7 +15,7 @@ const ProductDetails = ({ open, onClose, product }) => {
   if (!product) return null;
 
   const galleryImages = product.images || [];
-  
+
   const handleBackClick = () => {
     navigate('/store');
     onClose(); 
@@ -73,7 +73,10 @@ const ProductDetails = ({ open, onClose, product }) => {
           <div className="product__info">
             <div className="title">
               <h1>{product.title}</h1>
-              <span>In Stock: {product.stock}</span>
+              {/* Stock status displayed here */}
+              <span style={{ fontWeight: 'bold', color: product.stock > 0 ? 'green' : 'red' }}>
+                {product.stock > 0 ? 'In Stock' : 'Out of Stock'}
+              </span>
             </div>
             <div className="price">
               $ <span>{product.price}</span>
@@ -82,10 +85,14 @@ const ProductDetails = ({ open, onClose, product }) => {
               <h3>Details</h3>
               <p>{product.description}</p>
             </div>
-            <Button variant="contained" color="primary" style={{ marginRight: '10px' }}>
+            <Button 
+              variant="contained" 
+              color="primary" 
+              style={{ marginRight: '10px' }}
+              disabled={product.stock === 0} // Disable button if out of stock
+            >
               Add to Cart
             </Button>
-           
           </div>
         </div>
       </DialogContent>
