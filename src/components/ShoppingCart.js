@@ -41,6 +41,20 @@ const ShoppingCart = () => {
     setSelectedProduct(null);
   };
 
+  const handleCheckout = async () => {
+    console.log('Checkout button clicked');
+    try {
+      const response = await axios.post('http://localhost:3001/create-checkout-session', {
+        cartItems,
+      });
+      console.log('Response received:', response);
+      window.location.href = response.data.url;
+    } catch (error) {
+      console.error('Error during checkout:', error);
+    }
+  };
+  
+
   // Calculate total price
   const totalPrice = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2);
 
@@ -98,6 +112,12 @@ const ShoppingCart = () => {
           color="primary" 
         />
       )}
+       <BasicButtons 
+                    onClick={handleCheckout} 
+                    label='Checkout' 
+                    variant="contained" 
+                    color="primary" 
+                  />
 
       <Snackbar
         open={alertOpen}
