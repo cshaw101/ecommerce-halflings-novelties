@@ -5,6 +5,7 @@ import Stack from '@mui/material/Stack';
 import Skeleton from '@mui/material/Skeleton';
 import useProducts from '../mockProducts';
 import ProductDisplay from './ProductDisplay';
+import MostLiked from './MostLiked';
 
 const Store = () => {
   const { productData, loading, error } = useProducts();
@@ -26,6 +27,7 @@ const Store = () => {
 
   return (
     <div>
+      <MostLiked />
       <h1>Our Products</h1>
       <Grid container spacing={2}>
         {loading
