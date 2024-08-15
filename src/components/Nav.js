@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Link } from 'react-router-dom';
-import { useCart } from '../context/CartContext'; // Import the useCart hook
+import { useCart } from '../context/CartContext'; 
 
 export default function ButtonAppBar() {
   const { cartItems } = useCart(); // Get cart items from context

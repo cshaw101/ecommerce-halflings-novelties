@@ -2,6 +2,7 @@ import React from 'react';
 import { Modal, Box, Typography } from '@mui/material';
 
 
+
 const ProductDetailsModal = ({ open, onClose, product }) => {
 
   if (!product) return null;
@@ -41,6 +42,7 @@ const ProductDetailsModal = ({ open, onClose, product }) => {
         <Typography sx={{ mt: 2 }}>Stock: {product.stock}</Typography>
         <Typography sx={{ mt: 2 }}>Brand: {product.brand}</Typography>
         <Typography sx={{ mt: 2 }}>Category: {product.category}</Typography>
+   
       </Box>
     </Modal>
   );
