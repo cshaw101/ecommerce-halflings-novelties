@@ -1,5 +1,4 @@
-// src/App.js
-import React from 'react';
+import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Store from './components/Store';
 import Home from './components/Home';
@@ -12,13 +11,20 @@ import Success from './components/Success';
 import Failure from './components/Failure';
 
 function App() {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleSearch = (term) => {
+    console.log('Search term in App:', term); // Check if this logs the correct search term
+    setSearchTerm(term);
+  };
+
   return (
     <div className="app-container">
-      <ButtonAppBar />
+      <ButtonAppBar onSearch={handleSearch} />
       <div className="content">
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/store' element={<Store />} />
+          <Route path='/store' element={<Store searchTerm={searchTerm} />} />
           <Route path='/shoppingcart' element={<ShoppingCart />} />
           <Route path='/about' element={<About />} />
           <Route path="/product/:id" element={<ProductDetailsPage />} />

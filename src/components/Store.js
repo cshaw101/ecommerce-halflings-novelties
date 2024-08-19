@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Grid from '@mui/material/Grid';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
@@ -6,17 +6,28 @@ import Skeleton from '@mui/material/Skeleton';
 import useProducts from '../mockProducts';
 import ProductDisplay from './ProductDisplay';
 import MostLiked from './MostLiked';
+import { useSearch } from '../context/SearchContext'; // Adjust path as necessary
 
 const Store = () => {
   const { productData, loading, error } = useProducts();
+  const { searchTerm } = useSearch();
   const [page, setPage] = useState(1);
   const productsPerPage = 9;
+
+  useEffect(() => {
+    console.log('Search term in Store:', searchTerm); // Ensure the search term is received
+  }, [searchTerm]);
 
   const handleChange = (event, value) => {
     setPage(value);
   };
 
-  const displayedProducts = productData.slice(
+  // Filter products based on the search term
+  const filteredProducts = productData.filter(product =>
+    product.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const displayedProducts = filteredProducts.slice(
     (page - 1) * productsPerPage,
     page * productsPerPage
   );
@@ -55,7 +66,7 @@ const Store = () => {
       </Grid>
       <Stack spacing={2} sx={{ marginTop: '20px', alignItems: 'center' }}>
         <Pagination
-          count={Math.ceil(productData.length / productsPerPage)}
+          count={Math.ceil(filteredProducts.length / productsPerPage)}
           page={page}
           onChange={handleChange}
           variant="outlined"
