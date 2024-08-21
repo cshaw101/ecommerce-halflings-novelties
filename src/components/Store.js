@@ -40,39 +40,47 @@ const Store = () => {
     <div>
       <MostLiked />
       <h1>Our Products</h1>
-      <Grid container spacing={2}>
-        {loading
-          ? skeletonArray.map((_, index) => (
-              <Grid item xs={12} sm={6} md={4} key={index}>
-                <Skeleton variant="rectangular" width="100%" height={200} />
-                <Skeleton width="60%" />
-                <Skeleton width="40%" />
-                <Skeleton width="100%" />
-                <Skeleton width="80%" />
-              </Grid>
-            ))
-          : displayedProducts.map((product) => (
-              <Grid item xs={12} sm={6} md={4} key={product.id}>
-                <ProductDisplay
-                  name={product.title}
-                  description={product.description}
-                  price={`$${product.price}`}
-                  imageUrl={product.thumbnail}
-                  stock={product.stock > 0 ? 'In Stock' : 'Out of Stock'}
-                  product={product} // Pass the entire product object
-                />
-              </Grid>
-            ))}
-      </Grid>
-      <Stack spacing={2} sx={{ marginTop: '20px', alignItems: 'center' }}>
-        <Pagination
-          count={Math.ceil(filteredProducts.length / productsPerPage)}
-          page={page}
-          onChange={handleChange}
-          variant="outlined"
-          color="primary"
-        />
-      </Stack>
+      {filteredProducts.length === 0 ? (
+        <p style={{ textAlign: 'center', fontSize: '1.5rem', color: 'red' }}>
+          Sorry! We can't find that right now!
+        </p>
+      ) : (
+        <>
+          <Grid container spacing={2}>
+            {loading
+              ? skeletonArray.map((_, index) => (
+                  <Grid item xs={12} sm={6} md={4} key={index}>
+                    <Skeleton variant="rectangular" width="100%" height={200} />
+                    <Skeleton width="60%" />
+                    <Skeleton width="40%" />
+                    <Skeleton width="100%" />
+                    <Skeleton width="80%" />
+                  </Grid>
+                ))
+              : displayedProducts.map((product) => (
+                  <Grid item xs={12} sm={6} md={4} key={product.id}>
+                    <ProductDisplay
+                      name={product.title}
+                      description={product.description}
+                      price={`$${product.price}`}
+                      imageUrl={product.thumbnail}
+                      stock={product.stock > 0 ? 'In Stock' : 'Out of Stock'}
+                      product={product} // Pass the entire product object
+                    />
+                  </Grid>
+                ))}
+          </Grid>
+          <Stack spacing={2} sx={{ marginTop: '20px', alignItems: 'center' }}>
+            <Pagination
+              count={Math.ceil(filteredProducts.length / productsPerPage)}
+              page={page}
+              onChange={handleChange}
+              variant="outlined"
+              color="primary"
+            />
+          </Stack>
+        </>
+      )}
     </div>
   );
 };
